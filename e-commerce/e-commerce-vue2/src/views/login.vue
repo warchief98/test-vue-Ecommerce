@@ -1,7 +1,7 @@
 <template>
     <div class="login">
-        <p v-if="isWrong">Username or Password is wrong!!!</p>
-        <p v-if="isEmpty">fill the blanks</p>
+        <p v-if="isWrong" class="error">Username or Password is wrong!!!</p>
+        <p v-if="isEmpty" class="error">fill the blanks</p>
         <input type="text" v-model="fields.username" placeholder="Username">
         <input type="password" v-model="fields.password" placeholder="Password">
         <button @click="login()">Login</button>
@@ -62,9 +62,27 @@ export default {
 
 <style scoped>
     .login{
+        border: 1px solid silver;
+        padding: 5px 20px;
         margin: auto;
         width: 50%;
         display: flex;
         flex-direction: column;
+        align-items: center;
+    }
+    .login *{
+        margin: 20px 0;
+    }
+    .login input{
+        width: 100%;
+    }
+    .login button{
+        width: 50%;
+    }
+    .error{
+        border: 1px solid red;
+        width: 100%;
+        text-align: center;
+        background-color: rgba(255, 0, 0, 0.478);
     }
 </style>
