@@ -75,6 +75,7 @@
 </template>
 
 <script>
+import setHeader from '../utils/setFuncAxiosHeader'
 
 const customLabels = {
     first: '<<',
@@ -94,17 +95,19 @@ export default {
     },
     created(){
         this.getAllProducts();
+        // console.log(window.localStorage.getItem('token'))
     },
     methods:{
         onChangePage(pageOfItems) {
             this.pageOfItems = pageOfItems;
         },
 
-        getAllProducts(){
-            this.axios.get(`https://fakestoreapi.com/products`).then((response) => {
+        async getAllProducts(){
+            await this.axios.get(`https://fakestoreapi.com/products`,setHeader(window.localStorage.getItem('token')))
+            .then((response) => {
                 this.data = response.data
-                // console.log(response)
             })
+            console.log(window.localStorage.getItem('token'))
         },
     }
 

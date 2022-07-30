@@ -8,27 +8,31 @@
     </div>
 </template>
 <script>
+// import { response } from 'express';
+
 export default {
     name:'Login',
     data(){
         return{
             id:null,
             fields:{
-                username:'',
-                password:''
+                username:'johnd',
+                password:'m38rmF$'
             },
             isWrong:false,
             isEmpty:false,
         }
     },
     created(){
+        window.localStorage.removeItem('token')
+        // console.log('first token' + window.localStorage.getItem('token'))
         this.id = this.$route.query.id
         if(this.$store.state.isLogin == true){
             this.$router.push('/Products')
         }
     },
     methods:{
-        login(){
+        async login(){
             // if(Object.keys(this.fields).length <= 1){
             if((this.fields.username && this.fields.password) == ""){
                 this.isWrong = false;
@@ -39,13 +43,16 @@ export default {
                 dataLogin.username = this.fields.username
                 dataLogin.password = this.fields.password
 
-                this.axios.post('https://fakestoreapi.com/auth/login', {
+                await this.axios.post('https://fakestoreapi.com/auth/login', {
                 username: dataLogin.username,
                 password: dataLogin.password
                 })
                 .then(Response=>{
-                    console.log(Response.data.token);
+                    // console.log(Response.data.token);
+                    console.log(Response)
                     window.localStorage.setItem('isLogin',true)
+                    window.localStorage.setItem('token', Response.data.token)
+                    // console.log('2nd token' + window.localStorage.getItem('token'))
                         this.$store.commit('changeIsLogin', true)
                         this.$router.push({name:'Products'})
                         console.log(this.isLogin)
