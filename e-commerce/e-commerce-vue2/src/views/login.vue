@@ -48,21 +48,22 @@ export default {
                 password: dataLogin.password
                 })
                 .then(Response=>{
-                    // console.log(Response.data.token);
                     console.log(Response)
                     window.localStorage.setItem('isLogin',true)
                     window.localStorage.setItem('token', Response.data.token)
-                    // console.log('2nd token' + window.localStorage.getItem('token'))
                         this.$store.commit('changeIsLogin', true)
                         this.$router.push({name:'Products'})
-                        console.log(this.isLogin)
+
+                        console.log('beforeParse: ' + window.localStorage.getItem('token'))
+                        
+                        
                 })
                 .catch(err=>{
                     this.isEmpty = false;
                     this.isWrong = true;
                 })
             }
-        }
+        },
     }
 }
 </script>

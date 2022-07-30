@@ -13,6 +13,7 @@
                         <ul class="nav">
                             <li class="scroll-to-section"><router-link to="/Check-out">To card</router-link></li>
                             <li @click="logOut()"><a>logout</a></li>
+                            <!-- <li @click="clearAuth()"><a>clear Auth</a></li> -->
                         </ul>        
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -31,7 +32,10 @@ export default ({
         logOut(){
             this.$store.commit('changeIsLogin', false)
             this.$router.push('/')
-        }
+        },
+        // clearAuth(){
+        //     window.localStorage.removeItem('token')
+        // }
     }
 })
 </script>

@@ -4,6 +4,7 @@ import Products from '../views/Products'
 import Login from '../views/login'
 import SingleProduct from '../views/SingleProduct'
 import CheckOut from '../views/CheckOut'
+import { createLogger } from 'vuex'
 
 
 Vue.use(VueRouter)
@@ -29,6 +30,7 @@ const routes = [{
         component: CheckOut
     }
 ]
+
 
 const router = new VueRouter({
     mode: 'history',

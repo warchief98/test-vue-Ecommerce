@@ -107,7 +107,7 @@ export default {
             .then((response) => {
                 this.data = response.data
             })
-            console.log(window.localStorage.getItem('token'))
+            // console.log(window.localStorage.getItem('token'))
         },
     }
 

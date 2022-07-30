@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <div class="total">
-                        <h4>Total: $ {{Math.round((this.numberOfOrder * this.data.price)*10)/10}}</h4>
+                        <h4>Total: $ {{ count }}</h4>
                         <div class="main-border-button"><a @click="addToCard()">Add To Cart</a></div>
                     </div>
                 </div>
@@ -87,6 +87,11 @@
             this.id = this.$route.query.id;
             this.getSingleProduct();
             
+        },
+        computed:{
+            count : function () {
+                Math.round((this.numberOfOrder * this.data.price)*10)/10
+            }
         },
         methods:{
             async getSingleProduct(){
